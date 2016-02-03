@@ -1,0 +1,295 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                    %%
+%% This is file `ucalgarythesis.tex'  -- a document template for      %%
+%% graduate theses at the University of Calgary.                      %%
+%%                                                                    %%
+%% This template document is to be used in conjunction with the       %%
+%% thesis class file `ucalgarythesis.cls'.                            %%
+%%                                                                    %%
+%% Created by M.W. Girard, last updated 01 Feb 2016.                  %%
+%%                                                                    %%
+%% This template was created to be in compliance with the University  %%
+%% of Calgary thesis guidelines (version 14 April 2014)               %%
+%%       https://grad.ucalgary.ca/current/thesis/guidelines.          %%
+%%                                                                    %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                    %%
+%% By default, the text of the thesis is doublespaced and should be   %%
+%% printed single-sided. All margins must be exactly one inch on all  %%
+%% sides, and should not be bound or have binding edges. This is      %%
+%% required by the University of Calgary thesis guidelines.           %%
+%% All theses are now required to be submitted electronically.        %%
+%%                                                                    %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Load the `ucalgarythesis.cls' document class
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \documentclass{ucalgarythesis}
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %% If you would like to print a personal copy of your thesis for    %%
+  %% your own record, you may print it double-sided and with extra    %%
+  %% margins for binding. Use the following line instead of           %%
+  %% \documentclass{ucalgarythesis} for personal copies of the thesis %%
+  %% printed double-sided and bound.                                  %%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %\documentclass[twoside,binding]{MYucalgarythesis}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Imported packages & custom user commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Include extra packages here
+
+  \usepackage[utf8]{inputenc}
+  \usepackage{amssymb,amsthm,amsmath}
+
+%%  Include other user-defined commands here
+
+  \theoremstyle{plain}
+  \newtheorem{theorem}{Theorem}[chapter]
+  \newtheorem{lemma}[theorem]{Lemma}
+  \newtheorem{corollary}[theorem]{Corollary}
+  
+  \theoremstyle{definition}
+  \newtheorem{definition}[theorem]{Definition}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                    %%
+%% Begin document                                                     %%
+%%                                                                    %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                    %%
+%% Title page                                                         %%
+%%                                                                    %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Instructions for title page information:                           %%
+%%                                                                    %%
+%%  Fill in the following fields with the required information:       %%
+%%   - \title{...}        title of the thesis                         %%
+%%   - \author{...}       your full name                              %%
+%%   - \dept{...}         full name of the graduate department        %%
+%%                          or degree program                         %%
+%%   - \degree{...}       full name of the degree obtained            %%
+%%                          (i.e. Doctor of Philosophy)               %%
+%%   - \gradyear{...}     year of submission                          %%
+%%   - \monthname{...}    month of submission                         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \title{
+   [Thesis Title (Title case, no more than 240 characters. No bold font or symbols, except Greek)]
+   \\ \bigskip
+   [Thesis Title Second Line (optional)]
+   }
+   
+  \author{[Your Full Name]}
+  \dept{Graduate Program in Mathematics and Statistics}
+  \degree{Doctor of Philosophy}
+  \gradyear{2016}
+  \monthname{February}
+  %\thesis{Thesis}              % may change `Thesis' to `Dissertation' depending on type of work
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+%% Make the thesis title page.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \frontmatter           %% Don't remove this line.
+  \makethesistitle       %% Don't remove this line.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                    %%
+%% Prefatory pages                                                    %%
+%%                                                                    %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The following sections are in the correct order    
+%% as specified by the April 2014 thesis guidelines
+%% set by the University of Calgary.
+%%
+%% You may remove the optional sections, but do not
+%% change their order.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Abstract page (required)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{thesisabstract}
+   [This page is required for all graduate student theses at the University of Calgary. An abstract is a short paragraph explaining the major points and conclusions of the thesis. Abstracts in theses presented by candidates for Master’s degrees must be no longer than 150 words. Abstracts in theses presented by candidates for doctoral degrees must be no longer than 350 words. Hyphenated words or words separated by a slash are considered two words.]
+  \end{thesisabstract}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Preface page (optional)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% This section is required if the work presented 
+%% in the thesis is done as part of a collaboration.
+%% In this case, the preface must state which parts
+%% of the thesis are the author's original work.
+%% Otherwise this section is optional.
+
+  \chapter{Preface}
+ 
+  This thesis is an original work by the author. No part of this thesis has been previously published.
+ 
+  % Some of the research conducted for this thesis forms part of an international research collaboration, led by Professor R.C. Smith at the University of Hogwarts
+   
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Acknowledgements page (required)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \chapter{Acknowledgements}  
+  
+    [Don't forget to thank someone.]
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Dedication page (this section is optional)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \chapter[Dedication]{}
+
+  \begin{dedication}
+     To all the time I've wasted...
+  \end{dedication}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Table of Contents (required)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Various lists
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% List of figures (required, if any)
+  \listoffigures
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% List of tables (required, if any)
+  \listoftables
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% List of Symbols, abbreviations, and 
+%% nomenclature (required, if any)   
+%%
+%% (Note: You may use your own format for your list of symbols, 
+%%  abbreviations, etc. This format is just a guideline)
+%%
+  \chapter{List of Symbols}      
+  \begin{tabbing}
+    Symbol~~~~~\= \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  \parbox{5in}{Definition}\\
+
+    \addsymbol \mbox{$\alpha$}: {The first letter of the Greek alphabet}
+    \addsymbol \mbox{$\beta$}: {The second letter of the Greek alphabet}
+    %
+    % Add more symbols here...
+    % . 
+    % .
+    % .
+    %
+    % ALWAYS KEEP THE FOLLOWING LINE IF YOU USE THIS LIST OF SYMBOLS
+  \end{tabbing}
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Epigraph (this section is optional)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \chapter{Epigraph}
+
+  \begin{epiquote} 
+   \textit{A quotation is a handy thing to have about, saving one the trouble of thinking for oneself, always a laborious business.} 
+  \end{epiquote}    
+  \begin{flushright} - A.A. Milne, \textit{If I May}\end{flushright}\bigskip
+   
+  [An epigraph is an apt quotation that precedes the text of a chapter or of a book. Quotation marks are not used. The author and title of the source must be cited below the quotation.]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                    %%
+%% Main matter                                                        %%
+%%                                                                    %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \mainmatter           %% Do not remove this line
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Chapters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+  \include{chapter1}  
+  %\include{chapter2}
+  %\include{chapter3}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                     %%
+% Bibliography                                                        %%
+%                                                                     %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% As required by the 2014 thesis guidelines, the
+%% bibliography must appear in the table of 
+%% contents. 
+  \thesisbibliography %% Do not remove this line
+
+
+%% Standard bibliography
+  \begin{thebibliography}{9}
+
+    \bibitem{anybody} N. E. Body, {\em Anybody Can Write a Book.}  2015.
+    
+  \end{thebibliography}
+   
+%%%%%%%%% or %%%%%%%%
+ 
+%  \include{references} 
+
+%%%%%%%%% or %%%%%%%%
+%% Use BiBTeX. No really, use BiBTeX!
+   
+%  \bibliography{library}
+%  \bibliographystyle{plain}
+   
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                    %%
+%% Appendicies                                                        %%
+%%                                                                    %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \appendix
+
+  \include{appendixa}
+  %\include{appendixb}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                    %%
+%% End of document                                                    %%
+%%                                                                    %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+
+%%
+%% End of file `ucalgarythesis.tex'.
