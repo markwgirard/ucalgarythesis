@@ -94,13 +94,13 @@
 
 \providecommand\phantomsection{}
 
-%% Modify \addtocontents to include 
+%% Modify \addcontentsline to include 
 %% \phantomsection
 
-\let\addtocontents\oldaddtocontents
-\newcommand{\addtocontents}[3]{
+\let\oldaddcontentsline\addcontentsline
+\renewcommand{\addcontentsline}[3]{
       \phantomsection
-      \oldaddtocontents{#1}{#2}{#3}
+      \oldaddcontentsline{#1}{#2}{#3}
 }
 
 %%   ****************************************                         %%
