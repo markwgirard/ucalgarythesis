@@ -6,7 +6,7 @@
 %% This template document is to be used in conjunction with the       %%
 %% thesis class file `ucalgarythesis.cls'.                            %%
 %%                                                                    %%
-%% Created by M.W. Girard, last updated 01 Feb 2016.                  %%
+%% Created by M.W. Girard, last updated 04 Feb 2016.                  %%
 %%                                                                    %%
 %% This template was created to be in compliance with the University  %%
 %% of Calgary thesis guidelines (version 14 April 2014)               %%
@@ -169,21 +169,28 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
-%% Table of Contents (required)
+%% Various lists
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-  \tableofcontents
+%% The Table of Contents and all Lists should be 
+%% single spaced.
+  \begin{singlespace}   %% Do not remove this line
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
-%% Various lists
+%% Table of Contents (required)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \renewcommand\contentsname{Table of Contents}
+  \addtocontents{toc}{chapter}{\contentsname}
+  \tableofcontents
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% List of figures (required, if any)
+  \addtocontents{toc}{chapter}{List of Figures}
   \listoffigures
   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% List of tables (required, if any)
+  \addtocontents{toc}{chapter}{List of Tables}
   \listoftables
   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -207,6 +214,10 @@
     %
     % ALWAYS KEEP THE FOLLOWING LINE IF YOU USE THIS LIST OF SYMBOLS
   \end{tabbing}
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% End single spacing after last list
+  \end{singlespace}     %% Do not remove this line
   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -250,13 +261,13 @@
 %% As required by the 2014 thesis guidelines, the
 %% bibliography must appear in the table of 
 %% contents. 
-  \thesisbibliography %% Do not remove this line
-
+  \addtocontents{toc}{chapter}{Bibliography}=
 
 %% Standard bibliography
   \begin{thebibliography}{9}
 
     \bibitem{anybody} N. E. Body, {\em Anybody Can Write a Book.}  2015.
+    %\bibitem{}
     
   \end{thebibliography}
    
@@ -269,7 +280,6 @@
    
 %  \bibliography{library}
 %  \bibliographystyle{plain}
-   
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                                                    %%
@@ -277,19 +287,17 @@
 %%                                                                    %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  \appendix
+  \appendix             %% Do not remove this line
 
   \include{appendixa}
   %\include{appendixb}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                                                    %%
 %% End of document                                                    %%
 %%                                                                    %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\end{document}
-
+\end{document}          %% Do not remove this line
 
 %%
 %% End of file `ucalgarythesis.tex'.
