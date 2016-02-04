@@ -5,7 +5,7 @@
 %% is to be used in conjunction with the the thesis template file     %%
 %% `ucalgarythesis.tex'.                                              %%
 %%                                                                    %%   
-%% Created by M.W. Girard, last updated 01 Feb 2016.                  %%
+%% Created by M.W. Girard, last updated 04 Feb 2016.                  %%
 %%                                                                    %%
 %% This template was created to be in compliance with the University  %%
 %% of Calgary thesis guidelines (version 14 April 2014)               %%
@@ -32,6 +32,7 @@
 %%  ****************************************                          %%
 %%  01 Feb 2016 -- Document created (M.W. Girard)                     %%
 %%                   - loads LaTeX standard book class                %%
+%%  04 Feb 2016 -- Minor changes for simplification                   %%
 %%                                                                    %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -58,15 +59,10 @@
 \DeclareOption{binding}{\@bindingtrue}
 \DeclareOption{nobinding}{\@bindingfalse}
 
-%% New option: unbold (makes frontmatter sections unbold in TOC)
-\newif\if@unbold
-\@unboldfalse
-
-%% Options for unbold
-\DeclareOption{unbold}{\@bindingtrue}
-\DeclareOption{nounbold}{\@bindingfalse}
-
 %% Options for twosided or onesided printing
+%% (For some reason, this needs to be here 
+%% if though it already is part of the book
+%% class)
 \DeclareOption{twoside}{\@twosidetrue}
 \DeclareOption{oneside}{\@twosidefalse}
 
@@ -78,16 +74,14 @@
 %% All other options are passed to the base class directly.
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{\baseclass}}
 
-
 %%%%%%%%%%%%       OPTION EXECUTION       %%%%%%%%%%%%
 
 %% Default settings.
- \ExecuteOptions{letterpaper,oneside,nobinding,nounbold,12pt}
- \ExecuteOptions{doublespaced}
+ \ExecuteOptions{letterpaper,oneside,12pt}
+ \ExecuteOptions{doublespaced,nobinding}
 
 %% Process options.
-\ProcessOptions
-
+ \ProcessOptions
 
 %%   ****************************************                         %%
 %%   *            NECESSARY COMMANDS        *                         %%
@@ -100,6 +94,14 @@
 
 \providecommand\phantomsection{}
 
+%% Modify \addtocontents to include 
+%% \phantomsection
+
+\let\addtocontents\oldaddtocontents
+\newcommand{\addtocontents}[3]{
+      \phantomsection
+      \oldaddtocontents{#1}{#2}{#3}
+}
 
 %%   ****************************************                         %%
 %%   *               PACKAGES               *                         %%
@@ -112,9 +114,7 @@
 %% 2014 thesis guidelines, all margins must
 %% be exactly 1 inch on all sides.
 
-\geometry{
-         hmargin={1in,1in},vmargin={1in,1in}
-        }  
+\geometry{hmargin={1in,1in},vmargin={1in,1in}}  
 
 %% Submitted theses must not be bound. 
 %% Extra copies of the thesis that are 
@@ -123,8 +123,6 @@
 %% be used on the binding edge.
 \if@binding
  \geometry{bindingoffset=0.5in}
-\else
- \geometry{bindingoffset=0in}
 \fi
 
 %%   ****************************************                         %%
@@ -143,12 +141,12 @@
        \vfill
         {\@author \par }        % Set author 
        \vfill
-        {A \@thesis} \par       % Allow the word dissertation to be used here
+        {A \uppercase{\@thesis}} \par       % Allow the word dissertation to be used here
        SUBMITTED TO THE FACULTY OF GRADUATE STUDIES \par
        IN PARTIAL FULFILLMENT OF THE REQUIREMENTS FOR THE \par
-       {DEGREE OF \@degree}
+       {DEGREE OF \uppercase{\@degree}}
        \vfill
-        {\@dept \par}
+        \uppercase{\@dept \par}
        \vfill
         {CALGARY, ALBERTA \par}
         {{\@monthname}, {\@gradyear} \par}
@@ -162,28 +160,15 @@
 %%
 %% Commands for the thesis title page
 %%
-\def\dept#1{\gdef\@dept{\uppercase{#1}}}
-\def\degree#1{\gdef\@degree{\uppercase{#1}}}
-\def\monthname#1{\gdef\@monthname{\uppercase{#1}}}
+\def\dept#1{\gdef\@dept{#1}}
+\def\degree#1{\gdef\@degree{#1}}
+\def\monthname#1{\gdef\@monthname{#1}}
 \def\gradyear#1{\gdef\@gradyear{#1}}
-\def\thesis#1{\gdef\@thesis{\uppercase{#1}}}
-\def\author#1{\gdef\@author{#1}}
+\def\thesis#1{\gdef\@thesis{#1}}
 
 %%   ****************************************                         %%
 %%   *       FRONT MATTER SECTIONS          *                         %%
 %%   ****************************************                         %%
-
-%% Make frontmatter sections appear in normal 
-%% font in the table of contents, Mainmatter
-%% sections should appear normal.
-
-\if@unbold
-  \let\bforigdefault\bfdefault
-  \let\oldfrontmatter\frontmatter
-  \renewcommand{\frontmatter}{\oldfrontmatter\addtocontents{toc}{\let\string\bfdefault\string\mddefault}}
-  \let\oldmainmatter\mainmatter
-  \renewcommand{\mainmatter}{\addtocontents{toc}{\let\string\bfdefault\string\bforigdefault}\oldmainmatter}
-\fi
 
 %% *** Abstract environment ***
 \newenvironment{thesisabstract}{
@@ -196,41 +181,9 @@
 %% *** Dedication environment ***
 \newenvironment{dedication}{\par\vspace*{.15\textheight}\centering}%
      {\par}
-     
-%% *** Redefine table of contents ***     
-\renewcommand\contentsname{Table of Contents}
-\let\oldtableofcontents\tableofcontents
-\renewcommand{\tableofcontents}{ 
-      \begin{singlespace}
-      \oldtableofcontents
-      \addcontentsline{toc}{chapter}{Table of Contents}%
-      \phantomsection
-      \end{singlespace}      
-}
-
-%% *** Redefine list of figures *** 
-\let\oldlistoffigures\listoffigures
-\renewcommand{\listoffigures}{
-      \begin{singlespace}
-      \oldlistoffigures
-      \addcontentsline{toc}{chapter}{List of Figures}%
-      \phantomsection
-      \end{singlespace} 
-}
-     
-%% *** Redefine list of tables ***
-\let\oldlistoftables\listoftables
-\renewcommand{\listoftables}{
-      \begin{singlespace}
-      \oldlistoftables
-      \addcontentsline{toc}{chapter}{List of Tables}%
-      \phantomsection
-      \end{singlespace} 
-}
 
 %% *** Define addsymbol macro for list of symbols ***
 \def\addsymbol #1: #2{$#1$ \> \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \   \parbox{5in}{#2}\\}
-
 
 %% *** Epigraph quote environment  ***
 %% (For placing quotes in the epigraph)
@@ -243,16 +196,6 @@
 
 \def\epiquote{\list{}{\leftmargin 6.666em}\item[]}
 \let\endepiquote=\endlist
-
-%%    ****************************************                        %%
-%%    *            BIBLIOGRAPHY              *                        %%
-%%    ****************************************                        %%
-
-\newcommand{\thesisbibliography}{  
-  \if@unbold\addtocontents{toc}{\let\string\bfdefault\string\mddefault}\fi
-  \addcontentsline{toc}{chapter}{Bibliography}
-  }
-
 
 %%    ****************************************                        %%
 %%    *             PAGE STYLES              *                        %%
@@ -290,7 +233,6 @@
 \onecolumn                       % Single column.
 \if@twoside\else\raggedbottom\fi % Ragged bottom unless twoside option.
 \doublespacing                   % Double spacing.
-
 
 %%
 %% End of file `ucalgarythesis.cls'.
