@@ -37,7 +37,7 @@
   %% \documentclass{ucalgarythesis} for personal copies of the thesis %%
   %% printed double-sided and bound.                                  %%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %\documentclass[twoside,binding]{MYucalgarythesis}
+  %\documentclass[twoside,binding]{ucalgarythesis}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
@@ -48,6 +48,15 @@
 
   \usepackage[utf8]{inputenc}
   \usepackage{amssymb,amsthm,amsmath}
+  \usepackage[hidelinks]{hyperref}
+  
+%   \usepackage{tocloft}
+%   \setlength{\cftbeforesecskip}{4pt}
+%   \setlength{\cftbeforechapskip}{4pt}
+%   \setlength{\cftbeforesubsecskip}{4pt}
+%   \renewcommand{\cftchappresnum}{Chapter }
+%   \renewcommand{\cftchapaftersnum}{:}
+%   \renewcommand{\cftchapnumwidth}{6em}
 
 %%  Include other user-defined commands here
 
@@ -77,14 +86,17 @@
 %% Instructions for title page information:                           %%
 %%                                                                    %%
 %%  Fill in the following fields with the required information:       %%
-%%   - \title{...}        title of the thesis                         %%
-%%   - \author{...}       your full name                              %%
-%%   - \dept{...}         full name of the graduate department        %%
-%%                          or degree program                         %%
-%%   - \degree{...}       full name of the degree obtained            %%
-%%                          (i.e. Doctor of Philosophy)               %%
-%%   - \gradyear{...}     year of submission                          %%
-%%   - \monthname{...}    month of submission                         %%
+%%   - \title{...}        Title of the thesis                         %%
+%%   - \author{...}       Your full name                              %%
+%%   - \thesis{Thesis}    Type of document (may change to `Thesis' to %%
+%%                           `Dissertation' depending on type of work)%%
+%%   - \dept{...}         Full name of the graduate department or     %%
+%%                           degree program                           %%
+%%   - \degree{...}       Full name of the degree obtained            %%
+%%                          (i.e. Doctor of Philosophy,               %%
+%%                                 Master of Science, etc)            %%
+%%   - \gradyear{...}     Year of submission                          %%
+%%   - \monthname{...}    Month of submission                         %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   \title{
@@ -94,11 +106,12 @@
    }
    
   \author{[Your Full Name]}
+  \thesis{Thesis}
   \dept{Graduate Program in Mathematics and Statistics}
   \degree{Doctor of Philosophy}
   \gradyear{2016}
-  \monthname{February}
-  %\thesis{Thesis}              % may change `Thesis' to `Dissertation' depending on type of work
+  \monthname{January}
+  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
 %% Make the thesis title page.
@@ -122,16 +135,17 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
-%% Abstract page (required)
+%% Abstract page (REQUIRED)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \begin{thesisabstract}
+
+  \begin{thesisabstract}  
    [This page is required for all graduate student theses at the University of Calgary. An abstract is a short paragraph explaining the major points and conclusions of the thesis. Abstracts in theses presented by candidates for Master’s degrees must be no longer than 150 words. Abstracts in theses presented by candidates for doctoral degrees must be no longer than 350 words. Hyphenated words or words separated by a slash are considered two words.]
   \end{thesisabstract}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
-%% Preface page (optional)
+%% Preface page (OPTIONAL)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% This section is required if the work presented 
@@ -149,7 +163,7 @@
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
-%% Acknowledgements page (required)
+%% Acknowledgements page (REQUIRED)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   \chapter{Acknowledgements}  
@@ -158,13 +172,13 @@
     
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
-%% Dedication page (this section is optional)
+%% Dedication page (this section is OPTIONAL)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   \chapter[Dedication]{}
-
+  
   \begin{dedication}
-     To all the time I've wasted...
+     \emph{To all the time I've wasted...}
   \end{dedication}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -177,19 +191,21 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
-%% Table of Contents (required)
+%% Table of Contents (REQUIRED)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \renewcommand\contentsname{Table of Contents}
+  \cleardoublepage\phantomsection
   \addcontentsline{toc}{chapter}{\contentsname}
   \tableofcontents
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% List of figures (required, if any)
+  \cleardoublepage\phantomsection
   \addcontentsline{toc}{chapter}{List of Figures}
   \listoffigures
   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% List of tables (required, if any)
+  \cleardoublepage\phantomsection
   \addcontentsline{toc}{chapter}{List of Tables}
   \listoftables
   
@@ -221,7 +237,7 @@
   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Epigraph (this section is optional)
+% Epigraph (this section is OPTIONAL)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   \chapter{Epigraph}
@@ -231,7 +247,7 @@
   \end{epiquote}    
   \begin{flushright} - A.A. Milne, \textit{If I May}\end{flushright}\bigskip
    
-  [An epigraph is an apt quotation that precedes the text of a chapter or of a book. Quotation marks are not used. The author and title of the source must be cited below the quotation.]
+  [(Remove this line.) An epigraph is an apt quotation that precedes the text of a chapter or of a book. Quotation marks are not used. The author and title of the source must be cited below the quotation.]
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -248,7 +264,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   
   \include{chapter1}  
-  %\include{chapter2}
+  \include{chapter2}
   %\include{chapter3}
 
 
@@ -260,13 +276,14 @@
 
 %% As required by the 2014 thesis guidelines, the
 %% bibliography must appear in the table of 
-%% contents. 
+%% contents.
+  \cleardoublepage\phantomsection
   \addcontentsline{toc}{chapter}{Bibliography}
 
 %% Standard bibliography
   \begin{thebibliography}{9}
 
-    \bibitem{anybody} N. E. Body, {\em Anybody Can Write a Book.}  2015.
+    \bibitem{anybody} N. E. Body, {\em Anybody Can Write a Book}. 2015.
     %\bibitem{}
     
   \end{thebibliography}
@@ -301,3 +318,4 @@
 
 %%
 %% End of file `ucalgarythesis.tex'.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

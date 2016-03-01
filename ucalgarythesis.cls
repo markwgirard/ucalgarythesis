@@ -94,15 +94,6 @@
 
 \providecommand\phantomsection{}
 
-%% Modify \addcontentsline to include 
-%% \phantomsection
-
-\let\oldaddcontentsline\addcontentsline
-\renewcommand{\addcontentsline}[3]{
-      \phantomsection
-      \oldaddcontentsline{#1}{#2}{#3}
-}
-
 %%   ****************************************                         %%
 %%   *               PACKAGES               *                         %%
 %%   ****************************************                         %%
@@ -141,12 +132,12 @@
        \vfill
         {\@author \par }        % Set author 
        \vfill
-        {A \uppercase{\@thesis}} \par       % Allow the word dissertation to be used here
-       SUBMITTED TO THE FACULTY OF GRADUATE STUDIES \par
-       IN PARTIAL FULFILLMENT OF THE REQUIREMENTS FOR THE \par
-       {DEGREE OF \uppercase{\@degree}}
+        {A \@thesis} \par       % Allow the word dissertation to be used here
+        SUBMITTED TO THE FACULTY OF GRADUATE STUDIES \par
+        IN PARTIAL FULFILLMENT OF THE REQUIREMENTS FOR THE \par
+        {DEGREE OF \@degree}
        \vfill
-        \uppercase{\@dept \par}
+        \@dept \par
        \vfill
         {CALGARY, ALBERTA \par}
         {{\@monthname}, {\@gradyear} \par}
@@ -154,17 +145,18 @@
         {\copyright\ {\@author}~~{\@gradyear} \par}
       \end{center}
       \end{titlepage}
+      \thispagestyle{empty}
       \setcounter{page}{2}
       \cleardoublepage
 }
 %%
 %% Commands for the thesis title page
 %%
-\def\dept#1{\gdef\@dept{#1}}
-\def\degree#1{\gdef\@degree{#1}}
+\def\dept#1{\gdef\@dept{\uppercase{#1}}}
+\def\degree#1{\gdef\@degree{\uppercase{#1}}}
 \def\monthname#1{\gdef\@monthname{#1}}
 \def\gradyear#1{\gdef\@gradyear{#1}}
-\def\thesis#1{\gdef\@thesis{#1}}
+\def\thesis#1{\gdef\@thesis{\uppercase{#1}}}
 
 %%   ****************************************                         %%
 %%   *       FRONT MATTER SECTIONS          *                         %%
@@ -172,6 +164,7 @@
 
 %% *** Abstract environment ***
 \newenvironment{thesisabstract}{
+      \phantomsection
       \addcontentsline{toc}{chapter}{Abstract}
       \begin{center}%
         \section*{Abstract}
@@ -181,6 +174,9 @@
 %% *** Dedication environment ***
 \newenvironment{dedication}{\par\vspace*{.15\textheight}\centering}%
      {\par}
+
+%% *** Name of Table of Contents ***
+\renewcommand\contentsname{Table of Contents}
 
 %% *** Define addsymbol macro for list of symbols ***
 \def\addsymbol #1: #2{$#1$ \> \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \   \parbox{5in}{#2}\\}
