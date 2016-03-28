@@ -5,7 +5,7 @@
 %% is to be used in conjunction with the the thesis template file     %%
 %% `ucalgarythesis.tex'.                                              %%
 %%                                                                    %%   
-%% Created by M.W. Girard, last updated 04 Feb 2016.                  %%
+%% Created by M.W. Girard, last updated 28 March 2016.                %%
 %%                                                                    %%
 %% This template was created to be in compliance with the University  %%
 %% of Calgary thesis guidelines (version 14 April 2014)               %%
@@ -33,6 +33,7 @@
 %%  01 Feb 2016 -- Document created (M.W. Girard)                     %%
 %%                   - loads LaTeX standard book class                %%
 %%  04 Feb 2016 -- Minor changes for simplification                   %%
+%%  28 Mar 2016 -- Minor changes (as requested by FGS)                %% 
 %%                                                                    %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -86,12 +87,7 @@
 %%   ****************************************                         %%
 %%   *            NECESSARY COMMANDS        *                         %%
 %%   ****************************************                         %%
-%% \phantomsection is defined in the hyperref
-%% package and is needed to prevent errors 
-%% with links within the document if hyperref 
-%% is loaded. If hyperref is not loaded, 
-%% \phantomsection is defined to be empty.
-
+%% If hyperref is not loaded, \phantomsection is defined to be empty.
 \providecommand\phantomsection{}
 
 %%   ****************************************                         %%
@@ -101,17 +97,14 @@
 \RequirePackage{geometry}
 \RequirePackage{setspace}
 
-%% As required by the University of Calgary 
-%% 2014 thesis guidelines, all margins must
-%% be exactly 1 inch on all sides.
+%% As required by the University of Calgary 2014 thesis guidelines, 
+%% all margins must be exactly 1 inch on all sides.
 
 \geometry{hmargin={1in,1in},vmargin={1in,1in}}  
 
-%% Submitted theses must not be bound. 
-%% Extra copies of the thesis that are 
-%% printed for personal use may be bound,
-%% in which case 1.5 inch margins shall 
-%% be used on the binding edge.
+%% Submitted theses must not be bound. Extra copies of the thesis 
+%% that are printed for personal use may be bound, in which case 
+%% 1.5 inch margins shall be used on the binding edge.
 \if@binding
  \geometry{bindingoffset=0.5in}
 \fi
@@ -145,7 +138,7 @@
         {\copyright\ {\@author}~~{\@gradyear} \par}
       \end{center}
       \end{titlepage}
-      \thispagestyle{empty}
+      \if@twoside\thispagestyle{empty}\else\fi
       \setcounter{page}{2}
       \cleardoublepage
 }
@@ -175,20 +168,15 @@
 \newenvironment{dedication}{\par\vspace*{.15\textheight}\centering}%
      {\par}
 
-%% *** Name of Table of Contents ***
-\renewcommand\contentsname{Table of Contents}
-
 %% *** Define addsymbol macro for list of symbols ***
 \def\addsymbol #1: #2{$#1$ \> \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \   \parbox{5in}{#2}\\}
 
 %% *** Epigraph quote environment  ***
 %% (For placing quotes in the epigraph)
 
-%% (As per 2014 thesis guidelines, quotes in 
-%% the epigraph must be 20 spaces from the 
-%% left margin. Since a standard space is 
-%% typically .333em, this distance is set 
-%% to 6.6666em.)
+%% (As per 2014 thesis guidelines, quotes in the epigraph must be 
+%% 20 spaces from the left margin. Since a standard space is 
+%% typically .333em, this distance is set to 6.6666em.)
 
 \def\epiquote{\list{}{\leftmargin 6.666em}\item[]}
 \let\endepiquote=\endlist
@@ -197,14 +185,13 @@
 %%    *             PAGE STYLES              *                        %%
 %%    ****************************************                        %%
 
-%% Redefine plain page style to have page numbers in upper 
-%% outer corner if twoside option is used (as regulated by
-%% the University of Calgary 2014 thesis guidelines). 
-%% Normally, theses should not be printed double sided
-%% and page numbers should always be in the bottom
-%% center of the page. 
+%% Redefine plain page style to have page numbers in upper outer 
+%% corner if twoside option is used (as regulated by the University 
+%% of Calgary 2014 thesis guidelines). Normally, theses should not 
+%% be printed double sided and page numbers should always be in the 
+%% bottom center of the page. 
 %%
-%% Page number location must be consistent throughout the 
+%% The location of the page number must be consistent throughout the 
 %% entire document.
 
 \if@twoside

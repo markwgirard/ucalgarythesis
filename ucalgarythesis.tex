@@ -6,7 +6,7 @@
 %% This template document is to be used in conjunction with the       %%
 %% thesis class file `ucalgarythesis.cls'.                            %%
 %%                                                                    %%
-%% Created by M.W. Girard, last updated 04 Feb 2016.                  %%
+%% Created by M.W. Girard, last updated 28 March 2016.                %%
 %%                                                                    %%
 %% This template was created to be in compliance with the University  %%
 %% of Calgary thesis guidelines (version 14 April 2014)               %%
@@ -33,9 +33,9 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %% If you would like to print a personal copy of your thesis for    %%
   %% your own record, you may print it double-sided and with extra    %%
-  %% margins for binding. Use the following line instead of           %%
-  %% \documentclass{ucalgarythesis} for personal copies of the thesis %%
-  %% printed double-sided and bound.                                  %%
+  %% margins for binding. Use the following line instead of the above %%
+  %% \documentclass{ucalgarythesis} for compiling personal copies of  %%
+  %% the thesis to be printed double-sided and bound.                 %%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %\documentclass[twoside,binding]{ucalgarythesis}
 
@@ -49,14 +49,6 @@
   \usepackage[utf8]{inputenc}
   \usepackage{amssymb,amsthm,amsmath}
   \usepackage[hidelinks]{hyperref}
-  
-%   \usepackage{tocloft}
-%   \setlength{\cftbeforesecskip}{4pt}
-%   \setlength{\cftbeforechapskip}{4pt}
-%   \setlength{\cftbeforesubsecskip}{4pt}
-%   \renewcommand{\cftchappresnum}{Chapter }
-%   \renewcommand{\cftchapaftersnum}{:}
-%   \renewcommand{\cftchapnumwidth}{6em}
 
 %%  Include other user-defined commands here
 
@@ -125,13 +117,11 @@
 %% Prefatory pages                                                    %%
 %%                                                                    %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% The following sections are in the correct order    
-%% as specified by the April 2014 thesis guidelines
-%% set by the University of Calgary.
-%%
-%% You may remove the optional sections, but do not
-%% change their order.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The following sections are in the correct order as specified by    %%
+%% the April 2014 thesis guidelines set by the University of Calgary. %%
+%%                                                                    %%
+%% You may remove optional sections, but do not change the order.     %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
@@ -148,10 +138,9 @@
 %% Preface page (OPTIONAL)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% This section is required if the work presented 
-%% in the thesis is done as part of a collaboration.
-%% In this case, the preface must state which parts
-%% of the thesis are the author's original work.
+%% This section is required if the work presented in the thesis is 
+%% done as part of a collaboration. In this case, the preface must 
+%% state which part of the thesis are the author's original work.
 %% Otherwise this section is optional.
 
   \chapter{Preface}
@@ -185,40 +174,42 @@
 %%
 %% Various lists
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% The Table of Contents and all Lists should be 
-%% single spaced.
+%% The Table of Contents and all Lists should be single spaced.
+
   \begin{singlespace}   %% Do not remove this line
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
 %% Table of Contents (REQUIRED)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \renewcommand\contentsname{Table of Contents}
   \cleardoublepage\phantomsection
   \addcontentsline{toc}{chapter}{\contentsname}
   \tableofcontents
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% List of figures (required, if any)
+  \renewcommand{\listfigurename}{List of Figures and Illustrations}
   \cleardoublepage\phantomsection
-  \addcontentsline{toc}{chapter}{List of Figures}
+  \addcontentsline{toc}{chapter}{\listfigurename}
   \listoffigures
-  
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% List of tables (required, if any)
+  \renewcommand{\listtablename}{List of Tables}
   \cleardoublepage\phantomsection
-  \addcontentsline{toc}{chapter}{List of Tables}
+  \addcontentsline{toc}{chapter}{\listtablename}
   \listoftables
   
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% List of Symbols, abbreviations, and 
-%% nomenclature (required, if any)   
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% List of Symbols, abbreviations, and nomenclature (required, if any)   
 %%
 %% (Note: You may use your own format for your list of symbols, 
-%%  abbreviations, etc. This format is just a guideline)
+%%  abbreviations, etc. This format is just a guideline.)
 %%
-  \chapter{List of Symbols}      
+  \chapter{List of Symbols, Abbreviations and Nomenclature}      
   \begin{tabbing}
-    Symbol~~~~~\= \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  \parbox{5in}{Definition}\\
+    Symbol or abbreviation~~~~~\= \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  \parbox{5in}{Definition}\\
 
     \addsymbol \mbox{$\alpha$}: {The first letter of the Greek alphabet}
     \addsymbol \mbox{$\beta$}: {The second letter of the Greek alphabet}
@@ -228,7 +219,8 @@
     % .
     % .
     %
-    % ALWAYS KEEP THE FOLLOWING LINE IF YOU USE THIS LIST OF SYMBOLS
+    
+    % Always keep the following line if you are using a list of symbols:
   \end{tabbing}
   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -274,13 +266,16 @@
 %                                                                     %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% As required by the 2014 thesis guidelines, the
-%% bibliography must appear in the table of 
-%% contents.
+%% As required by the 2014 thesis guidelines, the bibliography must
+%% appear in the table of contents. Do not remove the following lines. 
   \cleardoublepage\phantomsection
   \addcontentsline{toc}{chapter}{Bibliography}
+  
+%% There are multiple options for assembling a bibliography in LaTeX.
+%% Some of these options include:
 
-%% Standard bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Standard bibliography format
   \begin{thebibliography}{9}
 
     \bibitem{anybody} N. E. Body, {\em Anybody Can Write a Book}. 2015.
@@ -288,11 +283,12 @@
     
   \end{thebibliography}
    
-%%%%%%%%% or %%%%%%%%
+%%%%%%%%% or %%%%%%%%%%%%%%%%%%%%
+%% include separate bibliography file
  
 %  \include{references} 
 
-%%%%%%%%% or %%%%%%%%
+%%%%%%%%% or %%%%%%%%%%%%%%%%%%%%
 %% Use BiBTeX. No really, use BiBTeX!
    
 %  \bibliography{library}
