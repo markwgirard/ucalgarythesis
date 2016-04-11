@@ -5,7 +5,7 @@
 %% is to be used in conjunction with the the thesis template file     %%
 %% `ucalgarythesis.tex'.                                              %%
 %%                                                                    %%   
-%% Created by M.W. Girard, last updated 28 March 2016.                %%
+%% Created by M.W. Girard, last updated 10 April 2016.                %%
 %%                                                                    %%
 %% This template was created to be in compliance with the University  %%
 %% of Calgary thesis guidelines (version 14 April 2014)               %%
@@ -33,7 +33,8 @@
 %%  01 Feb 2016 -- Document created (M.W. Girard)                     %%
 %%                   - loads LaTeX standard book class                %%
 %%  04 Feb 2016 -- Minor changes for simplification                   %%
-%%  28 Mar 2016 -- Minor changes (as requested by FGS)                %% 
+%%  28 Mar 2016 -- Minor changes (as requested by FGS)                %%
+%%  10 Apr 2016 -- Changed default font size to 12                    %% 
 %%                                                                    %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -46,7 +47,7 @@
 %%   ****************************************                         %%
 %% Load base class using current setting for basic options.
 \providecommand{\baseclass}{book}
-\LoadClass{\baseclass}
+\LoadClass[letterpaper,12pt]{\baseclass}
 
 %%   ****************************************                         %%
 %%   *             CLASS OPTIONS            *                         %%
@@ -78,8 +79,7 @@
 %%%%%%%%%%%%       OPTION EXECUTION       %%%%%%%%%%%%
 
 %% Default settings.
- \ExecuteOptions{letterpaper,oneside,12pt}
- \ExecuteOptions{doublespaced,nobinding}
+ \ExecuteOptions{nobinding,oneside,doublespaced}
 
 %% Process options.
  \ProcessOptions
